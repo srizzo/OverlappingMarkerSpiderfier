@@ -3,13 +3,13 @@
 INDIR=../lib/
 INPREFIX=oms
 
-OUTDIR=./tmp/
+OUTDIR=../dist/
 OUTNAME=${INPREFIX}.min.js
 OUTFILE=${OUTDIR}${OUTNAME}
 
 coffee --output $OUTDIR --compile ${INDIR}${INPREFIX}.coffee
 
-java -jar /usr/local/closure-compiler/compiler.jar \
+closure-compiler \
   --compilation_level ADVANCED_OPTIMIZATIONS \
   --js ${OUTDIR}${INPREFIX}.js \
   --externs google_maps_api_v3_7.js \
